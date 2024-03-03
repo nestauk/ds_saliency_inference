@@ -47,7 +47,7 @@ st.title("Saliency Map Visualizer")
 
 st.markdown(
     """
-    ## MSI-Net Model Documentation
+    ## MSI-Net Model Demo
     
     ### Overview of MSI-Net
     The Multi-Scale Integration Network (MSI-Net) is a cutting-edge deep learning model designed for saliency detection in images. Saliency detection aims to identify the most important or attention-grabbing parts of an image, which can be crucial for various applications, including image editing, advertising, and content creation. MSI-Net leverages a sophisticated architecture that processes images at multiple scales, allowing it to capture a broad range of salient features from fine details to significant image components. By integrating information across these scales, MSI-Net achieves high precision in highlighting salient regions of an image, making it a powerful tool for researchers and developers working in the field of computer vision and image processing. Our work on this is based on Alexander Kroner’s work, which can be found in a Github repo [here](https://github.com/alexanderkroner/saliency).
