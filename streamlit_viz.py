@@ -60,7 +60,7 @@ with tab1:
     """
     ## Simulated Eye Tracking Demo Model Demo
 
-    We've moved! Please go to [https://simuleye/dap-tools.uk](https://simuleye/dap-tools.uk) to use the application.
+    We've moved! Please go to [https://simuleye.dap-tools.uk](https://simuleye.dap-tools.uk) to use the application.
 
     For more detailed usage documentation, please see [here](https://docs.google.com/document/d/1VWHDdSj6faXrBy1tQd6RVDsDTKYXTQ_nAhqXMAuInw4/edit?usp=sharing).
 
