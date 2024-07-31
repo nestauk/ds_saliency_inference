@@ -62,50 +62,13 @@ with tab1:
     """
     ## Simulated Eye Tracking Demo Model Demo
 
-    This is a demo of the Simulated Eye Tracking Model. To use it, upload an image
-    and click the button below. Please note, it may take up to 20 seconds to visualise.
+    We've moved! Please go to [https://simuleye/dap-tools.uk](https://simuleye/dap-tools.uk) to use the application.
 
     For more detailed usage documentation, please see [here](https://docs.google.com/document/d/1VWHDdSj6faXrBy1tQd6RVDsDTKYXTQ_nAhqXMAuInw4/edit?usp=sharing).
 
 
     """
     )
-    # get host from secrets
-    api_host = st.secrets["api_host"]
-
-    uploaded_file = st.file_uploader("Choose an image...", type=(["jpg", "jpeg", "png"]))
-
-    if uploaded_file is not None:
-        # Read image
-        image = np.array(Image.open(uploaded_file))
-        # Send image to API
-        st.write("")
-        st.write("Classifying...")
-        _, img_encoded = cv2.imencode('.jpg', image)
-        response = requests.post(api_host, files={"file": img_encoded.tobytes()})
-        # Parse JSON response and convert to numpy array
-        try:
-            response_data = response.json()
-            heatmap = np.asarray(json.loads(response_data))
-            heatmap = np.squeeze(heatmap)
-            # Ensure heatmap has the correct shape
-            if heatmap.shape != image.shape[:2]:
-                st.error(f"Heatmap shape mismatch: expected {image.shape[:2]}, got {heatmap.shape}")
-                st.stop()
-
-        except json.JSONDecodeError:
-            st.error("Failed to decode JSON response.")
-            st.stop()
-        except ValueError as e:
-            st.error(f"Error processing heatmap data: {e}")
-            st.stop()
-
-        # Overlay heatmap on the image
-        overlay_image = overlay_heatmap_on_image(image, heatmap)
-
-        # Display the overlay image
-        st.image(overlay_image, caption='Overlay Image with Heatmap.', use_column_width=True)
-
 
 
 with tab2:
