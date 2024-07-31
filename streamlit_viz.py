@@ -13,8 +13,6 @@ import cv2
 
 from PIL import Image
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # Function to overlay heatmap on the image
 def overlay_heatmap_on_image(image, heatmap):
     # Ensure the heatmap is of type uint8 and single-channel
