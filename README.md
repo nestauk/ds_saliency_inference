@@ -1,4 +1,4 @@
-# Saliency Inference API Template
+# Simulated Eye Tracking Inference App
 
 This is a Streamlit app to interact with a saliency eye tracking simulation model. We have a live version available, but if you want to run a local version of the app, follow the steps below. You will need to be using Python3.10 environment for the app to work.
 

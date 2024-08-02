@@ -1,26 +1,8 @@
-"""App to visualize saliency maps for images.
-To run, use:
-streamlit run streamlit_viz.py
+"""This is the old streamlit viz file. The new app is found in app.py. This file is kept to redirect users from the old link to the new link.
 """
 
 import streamlit as st
-import pandas as pd
-import numpy as np
-import requests
 import hmac
-import json
-import cv2
-
-from PIL import Image
-
-# Function to overlay heatmap on the image
-def overlay_heatmap_on_image(image, heatmap):
-    # Ensure the heatmap is of type uint8 and single-channel
-    heatmap = cv2.normalize(heatmap, None, 0, 255, cv2.NORM_MINMAX)
-    heatmap = np.uint8(heatmap)
-    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-    overlay = cv2.addWeighted(image, 0.6, heatmap, 0.4, 0)
-    return overlay
 
 def check_password():
     """Returns `True` if the user had the correct password."""
