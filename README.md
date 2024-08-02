@@ -1,6 +1,6 @@
 # Saliency Inference API Template
 
-This is an API and Streamlit app to interact with a saliency model. The API is built using FastAPI and the Streamlit app is built using Streamlit. The API is built to be run in a Docker container.
+This is a Streamlit app to interact with a saliency eye tracking simulation model. We have a live version available, but if you want to run a local version of the app, follow the steps below. You will need to be using Python3.10 environment for the app to work.
 
 ## Setup
 
@@ -10,45 +10,24 @@ This is an API and Streamlit app to interact with a saliency model. The API is b
 pip install -r requirements.txt
 ```
 
-### Run the API
+### Run the Streamlit App
 
-```bash
-uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8080
-```
-
-This will run the FastAPI server on port 8080.
-
-### (Alternative) Run the API in a Docker container
-
-
-```bash
-docker build -t ds-api-template .
-docker run -p 8080:8080 ds-api-template
-```
-
-You can test this is running by executing the same `curl` command as above, which should return the same response.
-
-NOTE: You will need to have Docker installed on your machine. To install Docker, follow the instructions [here](https://docs.docker.com/get-docker/).
-
-## Run the Streamlit App
-
-Once you've set up the API, you can run the Streamlit app to interact with the API.
-
-To run the Streamlit app, run the following command:
+To run the Streamlit app locally, run the following command:
 
 ```bash
 streamlit run app.py
 ```
+You will need to have an appropriate `.pb` model file in your `app` directory for the app to work. Reach out to jack.vines@nesta.org.uk or bowen.fung@bi.team to get access to this if required.
 
-You will need to have Streamlit installed on your machine. To install Streamlit, run the following command:
+The app should open automatically in your browser when you run the above, but can also be accessed from `http://localhost:8501/`.
 
-```bash
-pip install streamlit
-```
+## Generating a Model File
 
-You will also need to update a `secrets.toml` file in a `.streamlit` directory at the root of the repo. This file should contain the following:
+If you want to use a different model, you can do so following these steps.
 
-```toml
-api_host = "http://localhost:8080"
-password = "<INSERT DESIRED PASSWORD HERE>"
-```
+1. Find your desired model in [this](https://drive.google.com/drive/folders/1GI7i6GpfI-FoklP3vCc6vxe3T9nk3V2n) folder (the default we use is the `model_salicon_cpu` model.)
+2. Put the model file in the app directory and update the `graph_pb` variable in the `convert_model.py` file to point to the model file.
+3. Run `python convert_model.py`. This will produce a new model file in the `app` directory called `saved_model.pb`.
+4. Run the Streamlit app, which will now use your new model.
+
+The purpose of the above steps is to convert the models in the Google drive folder from Tensorflow v1 format to Tensorflow v2 format. This is important as trying to use v1 formats causes a lot of Python dependancy issues with other packages.
